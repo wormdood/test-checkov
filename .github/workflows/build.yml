@@ -5,7 +5,7 @@ on:
 
 jobs:
   update-checkov:
-    runs-on: [self-hosted, public, linux, x64]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: update release
