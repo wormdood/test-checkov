@@ -1,57 +1,17 @@
-# action.yml
-name: 'Checkov GitHub Action'
-author: 'Chris Mavrakis'
-description: 'Run Checkov against Terraform/CloudFormation infrastructure code, as a pre-packaged GitHub Action.'
-inputs:
-  directory:
-    description: 'directory with infrastructure code to scan'
-    default: '.'
-    required: false
-  compact:
-    description: 'Do not display code blocks in output'
-    required: false
-  quiet:
-    description: 'display only failed checks'
-    required: false
-  api-key:
-    description: 'Environment variable name of the Bridgecrew API key from Bridgecrew app'
-    required: false
-  soft_fail: false
-  framework: terraform
-  output_format: sarif
-  download_external_modules: true
-  log_level: DEBUG
-  container_user:
-    default: 0
-    description: 'Set the username or UID used and optionally the groupname or GID for the action to run under'
-    required: false
-outputs:
-  results:
-    description: 'The results from the infrastructure scan'
-
-branding:
-  icon: 'shield'
-  color: 'purple'
-runs:
-  using: 'docker'
-  image: 'docker://bridgecrew/checkov:2.0.1160'
-  args:
-    - ${{ inputs.directory }}
-    - ${{ inputs.check }}
-    - ${{ inputs.skip_check }}
-    - ${{ inputs.compact }}
-    - ${{ inputs.quiet }}
-    - ${{ inputs.soft_fail }}
-    - ${{ inputs.framework }}
-    - ${{ inputs.external_checks_dirs }}
-    - ${{ inputs.external_checks_repos }}
-    - ${{ inputs.output_format }}
-    - ${{ inputs.download_external_modules }}
-    - ${{ inputs.log_level }}
-    - ${{ inputs.config_file }}
-    - ${{ inputs.baseline }}
-    - ${{ inputs.hard_fail_on }}
-    - ${{ inputs.soft_fail_on }}
-    - "--user ${{ inputs.container_user }}"  
-  env:
-    API_KEY_VARIABLE: ${{ inputs.api-key }}
+branch: develop
+download-external-modules: true 
+evaluate-variables: true 
+framework:
+  - terraform 
+output: cli 
+quiet: false 
+repo-id: wormdood/test-checkov 
+skip-check: 
+  - CKV_DOCKER_3 
+  - CKV_DOCKER_2 
+skip-fixes: true 
+skip-framework:
+  - dockerfile
+  - secrets
+skip-suppressions: true 
+soft-fail: false
