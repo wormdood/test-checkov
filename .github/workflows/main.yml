@@ -11,7 +11,7 @@ jobs:
         id: checkov
         uses: bridgecrewio/checkov-action@master
         with:
-          directory: ../
+          directory: .
           check:  # optional: run only a specific check_id. can be comma separated list
           skip_check:  # optional: skip a specific check_id. can be comma separated list
           quiet: false # optional: display only failed checks
