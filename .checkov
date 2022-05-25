@@ -9,3 +9,5 @@ repo-id: wormdood/test-checkov
 soft-fail: true
 external-checks-dir: 
   - .checkov_custom
+external-modules-download-path: .external_modules
+
