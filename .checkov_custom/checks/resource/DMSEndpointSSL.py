@@ -5,7 +5,7 @@ from checkov.terraform.checks.resource.base_resource_value_check import BaseReso
 class DMSEndpointSSL(BaseResourceCheck):
     def __init__(self):
         name = "Ensure DMS Endpoint SSL is configured securely.  Endpoint should be secured with a KMS CMK and with the most stringent ssl_mode supported along with a certificate.  See https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.html#CHAP_Security.SSL"
-        id = "CKV_AWS_259"
+        id = "CKV_AWS_888"
         supported_resources = ['aws_dms_endpoint']
         categories = [CheckCategories.ENCRYPTION]
         super().__init__(name=name, id=id, categories=categories, supported_resources=supported_resources)
