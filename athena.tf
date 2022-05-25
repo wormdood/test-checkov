@@ -38,7 +38,7 @@ resource "aws_athena_workgroup" "athena_workgroup_default" {
   name = "example"
 
   configuration {
-    enforce_workgroup_configuration    = true
+    enforce_workgroup_configuration    = false
 
     result_configuration {
       output_location = "s3://${aws_s3_bucket.example.bucket}/output/"
