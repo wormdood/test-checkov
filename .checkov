@@ -7,3 +7,5 @@ output: sarif
 quiet: false 
 repo-id: wormdood/test-checkov 
 soft-fail: true
+external-checks-dir: 
+  - .checkov_custom
