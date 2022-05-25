@@ -136,26 +136,6 @@ resource "aws_api_gateway_stage" "not_connected" {
   stage_name    = "not_connected"
 }
 
-resource "aws_api_gateway_method_settings" "all" {
-  rest_api_id = aws_api_gateway_rest_api.not_connected.id
-  method_path = "*/*"
-
-  settings {
-    metrics_enabled = true
-    logging_level   = "ERROR"
-  }
-}
-
-resource "aws_api_gateway_method_settings" "path_specific" {
-  rest_api_id = aws_api_gateway_rest_api.not_connected.id
-  stage_name  = aws_api_gateway_stage.not_connected.stage_name
-  method_path = "path1/GET"
-
-  settings {
-    metrics_enabled = true
-    logging_level   = "DEBUG"
-  }
-}
 
 resource "aws_apigatewayv2_api" "example" {
   name          = "example-http-api"
