@@ -17,7 +17,7 @@ jobs:
       name: Setup Node
       with:
         node-version: '16'
-    - uses: terraform-linters/setup-tflint@latest
+    - uses: terraform-linters/setup-tflint@main
       name: Setup TFLint
       with:
         tflint_version: v0.29.0
