@@ -7,7 +7,7 @@ class APIGatewayCloudWatch(BaseResourceCheck):
     def __init__(self):
         self.Passed = False
         name = "Ensure API Gateway is configured to log to CloudWatch (account-level setting).  "
-        id = "CKV_AWS_990"
+        id = "CKV_AWS_891"
         supported_resources = ['aws_api_gateway_account','aws_api_gateway_rest_api']
         categories = [CheckCategories.LOGGING]
         super().__init__(name=name, id=id, categories=categories, supported_resources=supported_resources)
