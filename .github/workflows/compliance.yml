@@ -1,1 +1,55 @@
+on: [push]
+jobs:
+  tflint:
+    runs-on: ubuntu-latest
 
+   
+    steps:
+    - uses: actions/checkout@v2
+      name: Checkout source code
+
+    - uses: actions/cache@v2
+      name: Cache plugin dir
+      with:
+        path: ~/.tflint.d/plugins
+        key: ubuntu-tflint-${{ hashFiles('.tflint.hcl') }}
+    - uses: actions/setup-node@v3
+      name: Setup Node
+      with:
+        node-version: '16'
+    - uses: terraform-linters/setup-tflint@v1
+      name: Setup TFLint
+      with:
+        tflint_version: v0.36.2
+
+    - name: Show version
+      run: tflint --version
+
+    - name: Init TFLint
+      run: tflint --init
+
+    - name: Run TFLint
+      run: tflint -f json
+      
+  checkov-job:
+    runs-on: ubuntu-latest
+    name: checkov-action
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@master
+
+      - name: Run Checkov action
+        id: checkov
+        uses: bridgecrewio/checkov-action@master
+        with:
+          directory: .
+          check:  # optional: run only a specific check_id. can be comma separated list
+          skip_check:  # optional: skip a specific check_id. can be comma separated list
+          quiet: false # optional: display only failed checks
+          soft_fail: false # optional: do not return an error code if there are failed checks
+          framework: terraform # optional: run only on a specific infrastructure {cloudformation,terraform,kubernetes,all}
+          output_format: cli # optional: the output format, one of: cli, json, junitxml, github_failed_only, or sarif. Default: sarif
+          download_external_modules: true # optional: download external terraform modules from public git repositories and terraform registry
+          log_level: DEBUG # optional: set log level. Default WARNING
+          config_file: .checkov
+          container_user: 1000 # optional: Define what UID and / or what GID to run the container under to prevent permission issues
