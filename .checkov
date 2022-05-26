@@ -1,4 +1,3 @@
-branch: develop
 download-external-modules: true 
 evaluate-variables: true 
 framework:
