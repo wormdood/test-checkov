@@ -6,7 +6,7 @@ class APIGatewayMethodSettingCacheEncryptionEnabled(BaseResourceValueCheck):
 
 	def __init__(self):
 		name = "Ensure API Gateway method setting caching encryption is enabled"
-		id = "CKV_AWS_888"
+		id = "CKV_AWS_890"
 		supported_resources = ['aws_api_gateway_method_settings']
 		categories = [CheckCategories.ENCRYPTION]
 		super().__init__(name=name, id=id, categories=categories, supported_resources=supported_resources)
