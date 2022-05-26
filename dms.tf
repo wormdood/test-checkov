@@ -136,20 +136,3 @@ resource "aws_dms_endpoint" "test-default-fail" {
   username = "test"
 }
 
-
-resource "aws_dms_endpoint" "test-default-fail" {
-  database_name               = "test"
-  endpoint_id                 = "test-dms-endpoint-tf"
-  endpoint_type               = "source"
-  engine_name                 = "aurora"
-  extra_connection_attributes = ""
-  password                    = "test"
-  port                        = 3306
-  server_name                 = "test"
-
-  tags = {
-    Name = "test"
-  }
-
-  username = "test"
-}
