@@ -6,7 +6,7 @@ class AthenaWorkgroupCloudWatch(BaseResourceValueCheck):
 
     def __init__(self):
         name = "Ensure Athena Workgroup is configured to pubish CloudWatch metrics"
-        id = "CKV_AWS_257"
+        id = "CKV_AWS_889"
         supported_resources = ['aws_athena_workgroup']
         categories = [CheckCategories.GENERAL_SECURITY]
         super().__init__(name=name, id=id, categories=categories, supported_resources=supported_resources,
